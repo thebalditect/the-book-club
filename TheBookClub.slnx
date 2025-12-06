@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/build/">
+    <Project Path="src/build/TheBookClub.AppHost/TheBookClub.AppHost.csproj" />
+    <Project Path="src/build/TheBookClub.ServiceDefaults/TheBookClub.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/src/kernel/" />
+  <Folder Name="/src/kernel/domain/">
+    <Project Path="src/kernel/domain/TheBookClub.Kernel.Domain.UnitTests/TheBookClub.Kernel.Domain.UnitTests.csproj" />
+    <Project Path="src/kernel/domain/TheBookClub.Kernel.Domain/TheBookClub.Kernel.Domain.csproj" />
+  </Folder>
+</Solution>
