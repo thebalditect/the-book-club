@@ -1,0 +1,44 @@
+name: Build
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - '**/*.cs'
+      - '**/*.csproj'
+      - '**/*.sln'
+      - '**.props'
+      - '.editorconfig'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        id: check-out-code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Install dotnet
+        id: install-dotnet
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore nuget
+        id: restore-nuget
+        run: dotnet restore ./TheBookClub.slnx
+
+      - name: Lint Code
+        id: lint-code
+        run: dotnet format ./TheBookClub.slnx --verify-no-changes --no-restore
+    
+      - name: Run Tests
+        id: run-tests
+        run: dotnet tests ./TheBookClub.slnx --no-restore
+

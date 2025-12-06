@@ -1,2 +1,9 @@
 echo "Linting documents"
 npx markdownlint-cli2 "**/*.md" "#node_modules" --config ./.markdownlint-cli2.yaml
+
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+echo "Checking linting of code in the solution"
+dotnet format ./TheBookClub.slnx --verify-no-changes
+echo "Running tests"
+dotnet test ./TheBookClub.slnx

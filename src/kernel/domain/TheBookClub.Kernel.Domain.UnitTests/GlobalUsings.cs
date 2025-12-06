@@ -1,2 +1,3 @@
-global using Xunit;
 global using TheBookClub.Kernel.Domain;
+global using Xunit;
+
