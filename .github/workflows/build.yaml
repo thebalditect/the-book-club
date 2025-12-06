@@ -40,5 +40,5 @@ jobs:
     
       - name: Run Tests
         id: run-tests
-        run: dotnet tests ./TheBookClub.slnx --no-restore
+        run: dotnet test ./TheBookClub.slnx --no-restore
 
