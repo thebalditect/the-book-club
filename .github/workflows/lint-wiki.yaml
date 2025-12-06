@@ -1,0 +1,33 @@
+name: Wiki Linting
+on:
+  gollum:
+
+  workflow_dispatch:
+
+jobs:
+  lint-wiki:
+    name: Lint wiki
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Clone wiki repository
+        id: clone-wiki-repository
+        run: |
+          git clone https://github.com/${{ github.repository }}.wiki.git wiki
+          cd wiki
+          ls -la
+          cd configs
+          ls -la
+
+      - name: Install Node
+        id: install-node
+        uses: actions/setup-node@v6
+
+      - name: Install Markdown cli
+        id: install-markdown-cli
+        run: npm install markdownlint-cli2 --global
+
+      - name: Run linting
+        id: run-linting
+        run: markdownlint-cli2 "**/*.md" "#node_modules" --config ./configs/.markdownlint-cli2.yaml
+        working-directory: wiki
