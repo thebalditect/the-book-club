@@ -1,0 +1,2 @@
+echo "Linting documents"
+npx markdownlint-cli2 "**/*.md" "#node_modules" --config ./.markdownlint-cli2.yaml

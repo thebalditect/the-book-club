@@ -1,0 +1,29 @@
+<Project>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.6.0.109712" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageVersion Include="coverlet.msbuild" Version="6.0.4" />
+        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+        <PackageVersion Include="xunit" Version="2.9.2" />
+        <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
+    </ItemGroup>
+    <!--Aspire App Host-->
+    <ItemGroup>
+        <PackageVersion Include="Aspire.Hosting.Keycloak" Version="13.0.0-preview.1.25560.3" />
+        <PackageVersion Include="Aspire.Hosting.AppHost" Version="13.0.0" />
+    </ItemGroup>
+    <!--Aspire Service Defaults-->
+    <ItemGroup>
+        <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="9.9.0" />
+        <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="9.5.2" />
+        <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.12.0" />
+        <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
+        <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0" />
+        <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.12.0" />
+        <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.12.0" />
+    </ItemGroup>
+</Project>
