@@ -10,6 +10,10 @@ on:
       - '**/*.sln'
       - '**.props'
       - '.editorconfig'
+    
+  pull_request: 
+    branches: [main]
+
   workflow_dispatch:
 
 jobs:
