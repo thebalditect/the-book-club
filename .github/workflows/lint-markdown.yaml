@@ -25,7 +25,7 @@ jobs:
 
       - name: Install Markdownlint cli
         id: install-markdownlint-cli
-        run: npm install markdownlint-cli2 --global
+        run: npm install markdownlint-cli2 --global --ignore-scripts
 
       - name: Run Linting
         id: run-markdownlint
