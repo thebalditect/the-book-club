@@ -64,7 +64,7 @@ jobs:
           
           
           mkdir -p coverage
-          dotnet test ./TBC.slnX \
+          dotnet test ./TBC.slnx \
             --configuration Release \
             --no-restore \
             /p:CollectCoverage=true \
