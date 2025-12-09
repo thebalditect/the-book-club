@@ -36,13 +36,13 @@ jobs:
 
       - name: Restore nuget
         id: restore-nuget
-        run: dotnet restore ./TheBookClub.slnx
+        run: dotnet restore ./TBC.slnx
 
       - name: Lint Code
         id: lint-code
-        run: dotnet format ./TheBookClub.slnx --verify-no-changes --no-restore
+        run: dotnet format ./TBC.slnx --verify-no-changes --no-restore
     
       - name: Run Tests
         id: run-tests
-        run: dotnet test ./TheBookClub.slnx --no-restore
+        run: dotnet test ./TBC.slnx --no-restore
 

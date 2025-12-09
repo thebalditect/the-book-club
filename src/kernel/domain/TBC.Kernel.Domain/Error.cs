@@ -1,4 +1,4 @@
-namespace TheBookClub.Kernel.Domain;
+namespace TBC.Kernel.Domain;
 
 public record Error
 {

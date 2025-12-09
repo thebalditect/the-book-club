@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/solutionitems/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path=".editorconfig" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/build/">
+    <Project Path="src/build/TBC.AppHost/TBC.AppHost.csproj" />
+    <Project Path="src/build/TBC.ServiceDefaults/TBC.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/src/kernel/" />
+  <Folder Name="/src/kernel/domain/">
+    <Project Path="src/kernel/domain/TBC.Kernel.Domain.UnitTests/TBC.Kernel.Domain.UnitTests.csproj" />
+    <Project Path="src/kernel/domain/TBC.Kernel.Domain/TBC.Kernel.Domain.csproj" />
+  </Folder>
+</Solution>

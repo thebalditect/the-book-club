@@ -1,3 +1,3 @@
-namespace TheBookClub.Kernel.Domain.UnitTests;
+namespace TBC.Kernel.Domain.UnitTests;
 
 public record DummyReturnValue(string ReturnValue);

@@ -1,4 +1,4 @@
-namespace TheBookClub.Kernel.Domain.UnitTests;
+namespace TBC.Kernel.Domain.UnitTests;
 
 public class ErrorTests
 {
