@@ -76,4 +76,6 @@ jobs:
             --no-restore \
             /p:CollectCoverage=true \
             /p:CoverletOutputFormat=opencover
+          
+          dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"
 
