@@ -42,7 +42,29 @@ jobs:
         id: lint-code
         run: dotnet format ./TBC.slnx --verify-no-changes --no-restore
     
-      - name: Run Tests
+      - name: Run tests with coverage
         id: run-tests
-        run: dotnet test ./TBC.slnx --no-restore
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          echo "Installed tools. Setting Path variable."
+          export PATH="$PATH:$HOME/.dotnet/tools"
+          echo "Path variable updated. Creating coverage directory" 
+          
+          
+          echo "Starting sonnarscanner "
+          
+          dotnet sonarscanner begin \
+            /k:"thebalditect_the-book-club" \
+            /o:"thebalditect" \
+            /d:sonar.token="$SONAR_TOKEN" \
+            /d:sonar.cs.opencover.reportsPaths="src/**/coverage.opencover.xml" \
+            /d:sonar.host.url="https://sonarcloud.io"
+          
+          
+          mkdir -p coverage
+          dotnet test ./TBC.slnX \
+            --configuration Release \
+            --no-restore \
+            /p:CollectCoverage=true \
+            /p:CoverletOutputFormat=opencover
 
