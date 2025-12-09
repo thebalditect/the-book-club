@@ -17,16 +17,16 @@ public class Result
         return new Result(true, null);
     }
 
+    public static Result<T> Success<T>(T value)
+    {
+        return new Result<T>(value, true, null);
+    }
+
     public static Result Failure(List<Error> errors)
     {
         return errors.Count == 0
             ? throw new InvalidOperationException("Failure result should contain at least one error.")
             : new Result(false, errors);
-    }
-
-    public static Result<T> Success<T>(T value)
-    {
-        return new Result<T>(value, true, null);
     }
 
     public static Result<T> Failure<T>(List<Error> errors)
@@ -35,6 +35,7 @@ public class Result
             ? throw new InvalidOperationException("Failure result should contain at least one error.")
             : new Result<T>(default, false, errors);
     }
+
 }
 
 public class Result<T> : Result
