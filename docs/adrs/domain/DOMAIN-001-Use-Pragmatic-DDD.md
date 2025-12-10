@@ -1,6 +1,7 @@
 # DOMAIN-0001-Use-Pragmatic-Domain-Driven-Design
 
 Date: 6 December 2025
+
 Author: Mandar Dharmadhikari
 
 ## Status

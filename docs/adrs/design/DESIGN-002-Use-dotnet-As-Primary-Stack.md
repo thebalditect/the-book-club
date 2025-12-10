@@ -1,6 +1,7 @@
 # DESIGN-002-Use-dotnet-As-Primary-Tech-Stack
 
-Date: 6 December 2025,
+Date: 6 December 2025
+
 Status: Accepted
 
 ## Context

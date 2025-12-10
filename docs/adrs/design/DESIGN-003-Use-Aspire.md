@@ -1,6 +1,7 @@
 # DESIGN-003-Use-Aspire-For-Local-Orchestration
 
-Date: 6 Deember 2025
+Date: 6 December 2025
+
 Author: Mandar Dharmadhikari
 
 ## Status

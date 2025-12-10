@@ -1,6 +1,7 @@
 # DEVPS-001-Use-Conventional-Commits
 
 Date: 6 December 2025
+
 Status: Accepted
 
 ## Status

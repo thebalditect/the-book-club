@@ -1,6 +1,6 @@
 # Use CQRS For the Books Catalog Services
 
-Date: 10 Dec 2025
+Date: 10 December 2025
 
 Author: Mandar Dharmadhikari
 
