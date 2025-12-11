@@ -14,4 +14,10 @@
     <Project Path="src/kernel/domain/TBC.Kernel.Domain.UnitTests/TBC.Kernel.Domain.UnitTests.csproj" />
     <Project Path="src/kernel/domain/TBC.Kernel.Domain/TBC.Kernel.Domain.csproj" />
   </Folder>
+  <Folder Name="/src/services/" />
+  <Folder Name="/src/services/bookscatalog/">
+    <Project Path="src/services/bookscatalog/TBC.BooksCatalog.ArchitectureTests/TBC.BooksCatalog.ArchitectureTests.csproj" />
+    <Project Path="src/services/bookscatalog/TBC.BooksCatalog.Write.Domain.UnitTests/TBC.BooksCatalog.Write.Domain.UnitTests.csproj" />
+    <Project Path="src/services/bookscatalog/TBC.BooksCatalog.Write.Domain/TBC.BooksCatalog.Write.Domain.csproj" />
+  </Folder>
 </Solution>
