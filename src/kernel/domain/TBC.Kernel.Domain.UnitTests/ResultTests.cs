@@ -72,13 +72,13 @@ public class ResultTests
     {
         //Arrange
         List<Error> errors = [Error.Failure("BookCatalog.Failure", "Operation failed.")];
-        string expectedErrorMessage = "The property named Value can not be accessed for failure result.";
+        var expectedErrorMessage = "The property named Value can not be accessed for failure result.";
 
         //Act
         var result = Result.Failure<DummyReturnValue>(errors);
 
-        Func<DummyReturnValue> func = () => result.Value;
-        InvalidOperationException exception = Assert.Throws<InvalidOperationException>(func);
+        var func = () => result.Value!;
+        var exception = Assert.Throws<InvalidOperationException>(func);
         Assert.Equal(expectedErrorMessage, exception.Message);
     }
 
@@ -86,14 +86,14 @@ public class ResultTests
     public void Given_Operation_Failure_When_No_Error_Is_Provided_Then_InvalidOperationException_Is_Thrown()
     {
         //Arrange
-        string expectedErrorMessage = "Failure result should contain at least one error.";
+        var expectedErrorMessage = "Failure result should contain at least one error.";
 
         //Assert
-        InvalidOperationException exceptionOnBaseMethodInvocation =
+        var exceptionOnBaseMethodInvocation =
             Assert.Throws<InvalidOperationException>(() => Result.Failure([]));
         Assert.Equal(expectedErrorMessage, exceptionOnBaseMethodInvocation.Message);
 
-        InvalidOperationException exceptionOnDerivedMethodInvocation =
+        var exceptionOnDerivedMethodInvocation =
             Assert.Throws<InvalidOperationException>(() => Result.Failure<DummyReturnValue>([]));
         Assert.Equal(expectedErrorMessage, exceptionOnDerivedMethodInvocation.Message);
     }

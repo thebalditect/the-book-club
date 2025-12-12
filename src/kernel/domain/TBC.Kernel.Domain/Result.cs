@@ -2,15 +2,18 @@ namespace TBC.Kernel.Domain;
 
 public class Result
 {
-    public bool IsSuccess { get; }
-    public bool IsFailure => !IsSuccess;
-    public List<Error>? Errors { get; private set; }
+    private readonly List<Error>? _errors;
 
-    protected Result(bool isSuccess, List<Error>? errors)
+
+    protected Result(bool isSuccess, IEnumerable<Error>? errors)
     {
         IsSuccess = isSuccess;
-        Errors = errors;
+        _errors = errors?.ToList();
     }
+
+    public bool IsSuccess { get; }
+    public bool IsFailure => !IsSuccess;
+    public IReadOnlyCollection<Error>? Errors => _errors?.AsReadOnly();
 
     public static Result Success()
     {
@@ -22,20 +25,22 @@ public class Result
         return new Result<T>(value, true, null);
     }
 
-    public static Result Failure(List<Error> errors)
+    public static Result Failure(IEnumerable<Error> errors)
     {
-        return errors.Count == 0
+        var errorList = errors.ToList();
+
+        return errorList.Count == 0
             ? throw new InvalidOperationException("Failure result should contain at least one error.")
-            : new Result(false, errors);
+            : new Result(false, errorList);
     }
 
-    public static Result<T> Failure<T>(List<Error> errors)
+    public static Result<T> Failure<T>(IEnumerable<Error> errors)
     {
-        return errors.Count == 0
+        var errorList = errors.ToList();
+        return errorList.Count == 0
             ? throw new InvalidOperationException("Failure result should contain at least one error.")
-            : new Result<T>(default, false, errors);
+            : new Result<T>(default, false, errorList);
     }
-
 }
 
 public class Result<T> : Result
@@ -44,12 +49,12 @@ public class Result<T> : Result
     private readonly T? _value;
 #pragma warning restore IDE0032
 
-    public T? Value => IsSuccess
-        ? _value
-        : throw new InvalidOperationException("The property named Value can not be accessed for failure result.");
-
-    public Result(T? value, bool isSuccess, List<Error>? errors) : base(isSuccess, errors)
+    public Result(T? value, bool isSuccess, IEnumerable<Error>? errors) : base(isSuccess, errors)
     {
         _value = value;
     }
+
+    public T? Value => IsSuccess
+        ? _value
+        : throw new InvalidOperationException("The property named Value can not be accessed for failure result.");
 }

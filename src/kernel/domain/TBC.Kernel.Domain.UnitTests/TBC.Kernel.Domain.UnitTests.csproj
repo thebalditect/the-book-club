@@ -1,22 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <NoWarn>CA1515;CA1707</NoWarn>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.msbuild" />
+    <PackageReference Include="coverlet.msbuild"/>
     <PackageReference Include="Microsoft.NET.Test.Sdk"/>
     <PackageReference Include="xunit"/>
     <PackageReference Include="xunit.runner.visualstudio"/>
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Xunit" />
+    <Using Include="Xunit"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TBC.Kernel.Domain\TBC.Kernel.Domain.csproj" />
+    <ProjectReference Include="..\TBC.Kernel.Domain\TBC.Kernel.Domain.csproj"/>
   </ItemGroup>
 
 </Project>

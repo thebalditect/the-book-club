@@ -1,3 +1,3 @@
-IDistributedApplicationBuilder builder = DistributedApplication.CreateBuilder(args);
+var builder = DistributedApplication.CreateBuilder(args);
 
-await builder.Build().RunAsync();
+await builder.Build().RunAsync().ConfigureAwait(false);

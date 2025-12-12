@@ -8,12 +8,14 @@ using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
 
-namespace TBS.ServiceDefaults;
+namespace TBC.ServiceDefaults;
 
 // Adds common Aspire services: service discovery, resilience, health checks, and OpenTelemetry.
 // This project should be referenced by each service project in your solution.
 // To learn more about using this project, see https://aka.ms/dotnet/aspire/service-defaults
+#pragma warning disable CA1724
 public static class Extensions
+#pragma warning restore CA1724
 {
     private const string HealthEndpointPath = "/health";
     private const string AlivenessEndpointPath = "/alive";
@@ -59,8 +61,10 @@ public static class Extensions
                     .AddAspNetCoreInstrumentation(tracing =>
                         // Exclude health check requests from tracing
                         tracing.Filter = context =>
-                            !context.Request.Path.StartsWithSegments(HealthEndpointPath)
-                            && !context.Request.Path.StartsWithSegments(AlivenessEndpointPath)
+                            !context.Request.Path.StartsWithSegments(HealthEndpointPath,
+                                StringComparison.OrdinalIgnoreCase)
+                            && !context.Request.Path.StartsWithSegments(AlivenessEndpointPath,
+                                StringComparison.OrdinalIgnoreCase)
                     )
                     .AddHttpClientInstrumentation();
             });
@@ -73,7 +77,7 @@ public static class Extensions
     private static TBuilder AddOpenTelemetryExporters<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
     {
-        bool useOtlpExporter = !string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
+        var useOtlpExporter = !string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
 
         if (useOtlpExporter)
         {
@@ -97,16 +101,16 @@ public static class Extensions
     {
         // Adding health checks endpoints to applications in non-development environments has security implications.
         // See https://aka.ms/dotnet/aspire/healthchecks for details before enabling these endpoints in non-development environments.
+#pragma warning disable CA1062
         if (app.Environment.IsDevelopment())
+#pragma warning restore CA1062
         {
             // All health checks must pass for app to be considered ready to accept traffic after starting
             app.MapHealthChecks(HealthEndpointPath);
 
             // Only health checks tagged with the "live" tag must pass for app to be considered alive
-            app.MapHealthChecks(AlivenessEndpointPath, new HealthCheckOptions
-            {
-                Predicate = r => r.Tags.Contains("live")
-            });
+            app.MapHealthChecks(AlivenessEndpointPath,
+                new HealthCheckOptions { Predicate = r => r.Tags.Contains("live") });
         }
 
         return app;
