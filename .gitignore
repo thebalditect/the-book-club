@@ -419,6 +419,9 @@ FodyWeavers.xsd
 
 
 node_modules
+
+.idea
+
 /.idea/.idea.MyBookishSide/.idea/.gitignore
 /.idea/.idea.MyBookishSide/.idea/.name
 /.idea/.idea.MyBookishSide/.idea/aws.xml
