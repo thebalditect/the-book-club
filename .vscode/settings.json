@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "thebalditect",
+        "projectKey": "thebalditect_the-book-club"
+    }
+}
