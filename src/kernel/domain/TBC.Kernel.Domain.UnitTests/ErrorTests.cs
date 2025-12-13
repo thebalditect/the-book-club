@@ -9,7 +9,7 @@ public class ErrorTests
         string description)
     {
         //Arrange
-        ErrorType expectedErrorType = ErrorType.Failure;
+        var expectedErrorType = ErrorType.Failure;
         //Act
         var error = Error.Failure(code, description);
 
@@ -26,7 +26,7 @@ public class ErrorTests
         string description)
     {
         //Arrange
-        ErrorType expectedErrorType = ErrorType.NotFound;
+        var expectedErrorType = ErrorType.NotFound;
 
         //Act
         var error = Error.NotFound(code, description);
@@ -44,10 +44,28 @@ public class ErrorTests
         string description)
     {
         //Arrange
-        ErrorType expectedErrorType = ErrorType.Conflict;
+        var expectedErrorType = ErrorType.Conflict;
 
         //Act
         var error = Error.Conflict(code, description);
+
+        //Assert
+        Assert.Equal(code, error.Code);
+        Assert.Equal(description, error.Description);
+        Assert.Equal(expectedErrorType, error.ErrorType);
+    }
+
+    [Theory]
+    [InlineData("UnitTest.Error", "Name can not be empty.")]
+    [InlineData("BooksCatalog.Error", "Description can not be empty.")]
+    public void Given_Error_Code_And_Description_Validation_Should_Return_Validation_Type_Error(string code,
+        string description)
+    {
+        //Arrange
+        var expectedErrorType = ErrorType.Validation;
+
+        //Act
+        var error = Error.Validation(code, description);
 
         //Assert
         Assert.Equal(code, error.Code);
