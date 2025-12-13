@@ -77,8 +77,7 @@ public class ResultTests
         //Act
         var result = Result.Failure<DummyReturnValue>(errors);
 
-        var func = () => result.Value!;
-        var exception = Assert.Throws<InvalidOperationException>(func);
+        var exception = Assert.Throws<InvalidOperationException>(() => result.Value!);
         Assert.Equal(expectedErrorMessage, exception.Message);
     }
 

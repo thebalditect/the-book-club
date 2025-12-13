@@ -2,7 +2,7 @@ using TBC.BooksCatalog.Write.Domain;
 
 namespace TBC.BooksCatalog.ArchitectureTests;
 
-public class ArtefactsGaurdTests
+public class ArtefactsGuardTests
 {
     private readonly Assembly _domainAssembly = AssemblyReference.Assembly;
 
@@ -43,6 +43,6 @@ public class ArtefactsGaurdTests
             }
         }
 
-        Assert.True(failedEntities.Count == 0);
+        Assert.Empty(failedEntities);
     }
 }
